@@ -19,17 +19,9 @@ class CameraManager:
         self.resolution=(int(self.camera.get(cv2.CAP_PROP_FRAME_WIDTH)), int(self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT)))
         self.FPS=self.camera.get(cv2.CAP_PROP_FPS)
 
-        while True:
-            ret, frame = self.camera.read()
-
-            if not ret:
-                break
-
-            cv2.imshow("window", frame)
-
-            if cv2.waitKey(1) == ord('q'):
-                break
-        self.close()
+    def read_frame(self):
+        ret, frame=self.camera.read()
+        return ret, frame
 
     def close(self):
         if self.camera is not None:
@@ -39,3 +31,12 @@ class CameraManager:
 
 Cam1=CameraManager()
 Cam1.open()
+while True:
+    success, frame = Cam1.read_frame()
+    if not success: 
+        break
+    cv2.imshow("window", frame)
+    if cv2.waitKey(1) == ord('q'):
+        break
+Cam1.close()
+
