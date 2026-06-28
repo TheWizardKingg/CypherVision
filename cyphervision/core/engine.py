@@ -6,6 +6,7 @@ class Engine:
         self.camera=CameraManager()
     
     def run(self):
+        self.camera.open()
         while True:
             success, frame = self.camera.read_frame()
             if not success:
