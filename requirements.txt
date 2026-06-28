@@ -1,0 +1,6 @@
+numpy==2.5.0
+opencv-python==4.13.0.92
+# | **Package**       | **Why do we need it?**        | **Added in Version** |
+# | ----------------- | ----------------------------- | -------------------- |
+# | numpy             | Matrix operations             | v2.5.0               |
+# | opencv-python     | Camera + Image Processing     | v4.13.0.92           |
