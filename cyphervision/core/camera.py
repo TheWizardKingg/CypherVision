@@ -1,12 +1,10 @@
 import cv2
-
-
 class CameraManager:
 
-    def __init__(self, source=0):
+    def __init__(self):
         self.Isopen = False
         self.camera = None
-        self.source = source
+        self.source = 0
         self.resolution = (0, 0)
         self.FPS = 0
 
@@ -35,3 +33,16 @@ class CameraManager:
 
         cv2.destroyAllWindows()
         self.Isopen = False
+
+    def start(self):
+        self.open()
+        while True:
+            if not self.read_frame()[0]: 
+                break
+            cv2.imshow("window", cv2.cvtColor(self.read_frame()[1],cv2.COLOR_BGR2GRAY))
+            if cv2.waitKey(1)==ord('q'):
+                break
+        self.close()
+
+cam1= CameraManager()
+cam1.start()
