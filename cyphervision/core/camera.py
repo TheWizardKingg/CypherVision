@@ -34,15 +34,24 @@ class CameraManager:
         cv2.destroyAllWindows()          
         self.Isopen = False
 
-    def start(self):       # just a method to automate the upper three necessary function
-        self.open()
-        while True:
-            if not self.read_frame()[0]:       # basically the first thing returned by read_frame method (ret [boolean value])
-                break
-            cv2.imshow("window", cv2.cvtColor(self.read_frame()[1],cv2.COLOR_BGR2GRAY))      # second thing returned by read_frame (the actual frame)
-            if cv2.waitKey(1)==ord('q'):        # waitKey(...x...), here, x is the time in miliseconds to wait before destroying cv2 windows {0->infinite time}
-                break         # checks, whether after 1 milisecond of showing result, whether user enters a specific key (aka q) to delete all windows
-        self.close()
+    def giveMeTheFrame(self):
 
-cam1= CameraManager()       # making an object
-cam1.start()       # starting the object's work
+        return self.read_frame()
+    
+    
+
+            
+
+#=========================== I MADE THIS FUNCTION FOR TESTING ================================
+
+
+    # def start(self):       # just a method to automate the upper three necessary function
+    #     self.open()
+    #     while True:
+    #         if not self.read_frame()[0]:       # basically the first thing returned by read_frame method (ret [boolean value])
+    #             break
+    #         cv2.imshow("window", cv2.cvtColor(self.read_frame()[1],cv2.COLOR_BGR2GRAY))      # second thing returned by read_frame (the actual frame)
+    #         if cv2.waitKey(1)==ord('q'):        # waitKey(...x...), here, x is the time in miliseconds to wait before destroying cv2 windows {0->infinite time}
+    #             break         # checks, whether after 1 milisecond of showing result, whether user enters a specific key (aka q) to delete all windows
+    #     self.close()
+
