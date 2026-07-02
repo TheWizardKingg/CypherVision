@@ -21,3 +21,8 @@
 4. fixed circle communication between camera.py, gestureRecognition.py and main.py to hand over input frames, process them and output the result
 5. main.py contains the main app loop which controls the flow of Camera object and gesture objecta and prints the result 
 
+
+**DAY-4 :**
+
+1. Made a new class "DetectGestures" to setup new premade hand signs
+2. updated main.py file to keep the new class's input/output connected with the previous work flow
