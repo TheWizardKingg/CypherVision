@@ -1,12 +1,14 @@
 import cv2
 from cyphervision.core.camera import CameraManager
 from models.gestureRecognition import GestureRecognizer
+from models.gestureRecognition import DetectGestures
 
 camera = CameraManager()
 camera.open()
 print(camera.Isopen)
 print(camera.camera.isOpened())
 gesture_recognizer = GestureRecognizer()
+detector=DetectGestures()
 
 while True:
 
@@ -14,7 +16,11 @@ while True:
     if not success: 
         break
 
-    processed_frame = cv2.flip(gesture_recognizer.processThis(original_frame), 1)
+    original_frame, fingers = gesture_recognizer.processThis(original_frame)
+
+    processed_frame = cv2.flip(original_frame, 1)
+    hand_sign=detector.detectThisGesture(fingers)
+    print(hand_sign)
     
 
     cv2.imshow("window", processed_frame)
